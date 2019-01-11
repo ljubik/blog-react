@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import HeaderPage from './header/HeaderPage'
+
 class App extends Component {
   someMethod() {
     const test = '2'
@@ -9,8 +11,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <HeaderPage />
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code> src / App.js </code> and save to reload.{' '}
           </p>{' '}
