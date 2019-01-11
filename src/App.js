@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 
 import HeaderPage from './header/HeaderPage'
+import StartPage from './context/StartPage'
 
 class App extends Component {
   someMethod() {
@@ -10,20 +11,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
         <HeaderPage />
-        <header className="App-header">
-          <p>
-            Edit <code> src / App.js </code> and save to reload.{' '}
-          </p>{' '}
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer">
-            Learn React{' '}
-          </a>{' '}
-        </header>{' '}
+
+        <StartPage />
       </div>
     )
   }
