@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap'
+import { Route, Link } from 'react-router-dom'
 
 class HeaderPage extends Component {
   constructor(props) {
@@ -36,18 +37,13 @@ class HeaderPage extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/admin/">Admin</NavLink>
+                <Link to="/admin/AdminPage">Admin </Link>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/ljubik/blog-react">
-                  GitHub
-                </NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret right>
-                  Log Off
-                </DropdownToggle>
-              </UncontrolledDropdown>
+              <b>
+                <NavItem>
+                  <Link to="/">Log Off </Link>
+                </NavItem>
+              </b>
             </Nav>
           </Collapse>
         </Navbar>

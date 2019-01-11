@@ -4,8 +4,8 @@ import './App.css'
 
 import HeaderPage from './header/HeaderPage'
 import StartPage from './context/StartPage'
-import AdminPage from './admin/AdminPage'
-import AddNews from './admin/AddNews'
+// import AdminPage from './admin/AdminPage'
+// import AddNews from './admin/AddNews'
 
 class App extends Component {
   someMethod() {
@@ -15,9 +15,9 @@ class App extends Component {
     return (
       <div>
         <HeaderPage />
-        <AddNews />
-        <AdminPage />
         <StartPage />
+        {/* <AdminPage />
+        <AddNews />  */}
       </div>
     )
   }

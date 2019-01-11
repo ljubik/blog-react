@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap'
+import HeaderPage from '../header/HeaderPage'
+import { Route, Link } from 'react-router-dom'
 
 class AdminPage extends Component {
   render() {
     return (
       <div>
+        <HeaderPage />
         <Button outline color="success">
-          Greate New News
+          <Link to="/admin/AddNews">Greate New News </Link>
         </Button>
         <Table hover>
           <thead>
