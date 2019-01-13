@@ -37,7 +37,7 @@ class HeaderPage extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to="/admin/AdminPage">Admin </Link>
+                <Link to="/admin/admin-page">Admin </Link>
               </NavItem>
               <b>
                 <NavItem>

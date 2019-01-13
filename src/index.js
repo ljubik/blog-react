@@ -5,10 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import HeaderPage from './header/HeaderPage'
-import StartPage from './context/StartPage'
-import AdminPage from './admin/AdminPage'
-import AddNews from './admin/AddNews'
+import HeaderPage from './header/header-page'
+import StartPage from './context/start-page'
+import AdminPage from './admin/admin-page'
+import AddNews from './admin/add-news'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -16,7 +16,7 @@ ReactDOM.render(
       <Route exact path="/" component={App} />
       <Route path="/header/HeaderPage" component={HeaderPage} />
       <Route path="/context/StartPage" component={StartPage} />
-      <Route path="/admin/AdminPage" component={AdminPage} />
+      <Route path="/admin/admin-page" component={AdminPage} />
       <Route path="/admin/AddNews" component={AddNews} />
     </div>
   </BrowserRouter>,

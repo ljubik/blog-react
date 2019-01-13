@@ -8,7 +8,7 @@ import {
   Input,
   FormText,
 } from 'reactstrap'
-import HeaderPage from '../header/HeaderPage'
+import HeaderPage from '../header/header-page'
 import { Route, Link } from 'react-router-dom'
 
 class AddNews extends Component {
@@ -16,9 +16,7 @@ class AddNews extends Component {
     return (
       <div>
         <HeaderPage />
-        <Button outline color="secondary">
-          <Link to="/admin/AdminPage">Back </Link>
-        </Button>
+
         <Form>
           <FormGroup row>
             <Label for="TitleInput" sm={2}>
@@ -50,7 +48,7 @@ class AddNews extends Component {
             <Col sm={{ size: 10, offset: 2 }}>
               <Button color="success">Save</Button>
               <Button outline color="secondary">
-                Cancel
+                <Link to="/admin/admin-page">Cancel </Link>
               </Button>
             </Col>
           </FormGroup>

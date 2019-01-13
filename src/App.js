@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import HeaderPage from './header/HeaderPage'
-import StartPage from './context/StartPage'
-// import AdminPage from './admin/AdminPage'
+import HeaderPage from './header/header-page'
+import StartPage from './context/start-page'
+// import AdminPage from './admin/admin-page'
 // import AddNews from './admin/AddNews'
 
 class App extends Component {
