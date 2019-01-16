@@ -4,20 +4,23 @@ import './App.css'
 
 import HeaderPage from './header/header-page'
 import StartPage from './context/start-page'
-// import AdminPage from './admin/admin-page'
-// import AddNews from './admin/AddNews'
-
+import Container from './user/container'
+import { getItem, setItem } from './components/storageservice'
 class App extends Component {
+  async componentDidMount() {
+    const postList = getItem('postList')
+  }
+
   someMethod() {
     const test = '2'
   }
+
   render() {
     return (
       <div>
         <HeaderPage />
+        <Container />
         <StartPage />
-        {/* <AdminPage />
-        <AddNews />  */}
       </div>
     )
   }
