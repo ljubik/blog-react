@@ -12,6 +12,16 @@ import HeaderPage from '../header/header-page'
 import { Route, Link } from 'react-router-dom'
 import { getItem, setItem } from '../components/storageservice'
 
+class newPost {
+  constructor(props) {
+    this.title = props.title || 'Some title'
+    this.content = props.content || 'Some content'
+    this.urlAlias = props.urlAlias || 'Some urlAlias'
+    this.imageUrl = props.imageUrl || 'Some imageUrl'
+    this.like = props.like || 0
+  }
+}
+
 class AddNews extends Component {
   constructor(props) {
     super(props)
@@ -25,6 +35,10 @@ class AddNews extends Component {
     }
     this.input = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTitleChange = this.handleTitleChange.bind(this)
+  }
+  handleTitleChange(event) {
+    this.setState({ TitleInput: event.target.value })
   }
 
   handleSubmit(event) {
@@ -42,20 +56,20 @@ class AddNews extends Component {
 
     event.preventDefault()
     const { title, content, urlAlias, imageUrl, like, postList } = this.state
-    const post = {
-      title: this.state.title.value,
-      content: this.state.content,
-      urlAlias: this.state.urlAlias,
+    const post = new newPost({
+      title: title,
+      content: content,
+      urlAlias: urlAlias,
       imageUrl:
         'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
       like: 0,
-    }
+    })
     postList.push(post)
     //this.input.title.current.value = ''
     this.setState({
-      title: this.state.title.value,
-      content: this.state.content,
-      urlAlias: this.state.urlAlias,
+      title: this.title,
+      content: this.content,
+      urlAlias: this.urlAlias,
       imageUrl:
         'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
       like: 0,
@@ -86,7 +100,7 @@ class AddNews extends Component {
                 name="title"
                 id="TitleInput"
                 ref={this.input.title}
-                onChange={this.handleChange}
+                onChange={this.handleTitleChange}
               />
             </Col>
           </FormGroup>
@@ -100,7 +114,8 @@ class AddNews extends Component {
                 type="textarea"
                 name="content"
                 id="TextInput"
-                ref={this.input}
+                ref={this.input.content}
+                onChange={this.handleTextChange}
               />
             </Col>
           </FormGroup>
@@ -113,7 +128,8 @@ class AddNews extends Component {
                 type="text"
                 name="urlAlias"
                 id="urlInput"
-                ref={this.input}
+                ref={this.input.urlAlias}
+                onChange={this.handleUrlAliasChange}
               />
             </Col>
           </FormGroup>
