@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap'
 import HeaderPage from '../header/header-page'
 import { Route, Link } from 'react-router-dom'
+import { getItem, setItem, clearAll } from '../components/storageservice'
 
 class AdminPage extends Component {
+  async componentDidMount() {
+    const postList = getItem('postList')
+    this.setState({ postList: JSON.parse(postList) })
+  }
+
   render() {
     return (
       <div>
         <HeaderPage />
-        <Button outline color="success">
+        <Button outline color="success" onClick={this.handleNewBtn}>
           <Link to="/admin/add-news">Greate New News </Link>
         </Button>
         <Table hover>

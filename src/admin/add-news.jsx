@@ -10,10 +10,11 @@ import {
 } from 'reactstrap'
 import HeaderPage from '../header/header-page'
 import { Route, Link } from 'react-router-dom'
-import { getItem, setItem } from '../components/storageservice'
+import { getItem, setItem, clearAll } from '../components/storageservice'
 
 class newPost {
   constructor(props) {
+    //this.postList = props.postList || []
     this.title = props.title || 'Some title'
     this.content = props.content || 'Some content'
     this.urlAlias = props.urlAlias || 'Some urlAlias'
@@ -30,30 +31,33 @@ class AddNews extends Component {
       title: '',
       content: '',
       urlAlias: '',
-      imageUrl: '',
+      imageUrl:
+        'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
       like: Number,
     }
     this.input = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleContentChange = this.handleContentChange.bind(this)
+    this.handleUrlAliasChange = this.handleUrlAliasChange.bind(this)
   }
   handleTitleChange(event) {
-    this.setState({ TitleInput: event.target.value })
+    this.setState({ title: event.target.value })
   }
 
-  handleSubmit(event) {
-    // const { onSubmit, title, content, urlAlias, imageUrl, like } = this.props
-    // if (typeof onSubmit === 'function') {
-    //   onSubmit({
-    //     title: this.state.title.value,
-    //     content: this.state.content,
-    //     urlAlias: this.state.urlAlias,
-    //     imageUrl:
-    //       'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
-    //     like: 0,
-    //   })
-    // }
+  handleContentChange(event) {
+    this.setState({ content: event.target.value })
+  }
 
+  handleUrlAliasChange(event) {
+    this.setState({ urlAlias: event.target.value })
+  }
+
+  async componentDidMount() {
+    const postList = getItem('postList')
+    this.setState({ postList: JSON.parse(postList) })
+  }
+  handleSubmit(event) {
     event.preventDefault()
     const { title, content, urlAlias, imageUrl, like, postList } = this.state
     const post = new newPost({
@@ -91,14 +95,14 @@ class AddNews extends Component {
 
         <Form onSubmit={this.handleSubmit}>
           <FormGroup row>
-            <Label for="TitleInput" sm={2}>
+            <Label for="title" sm={2}>
               Title
             </Label>
             <Col sm={10}>
               <Input
                 type="text"
                 name="title"
-                id="TitleInput"
+                id="title"
                 ref={this.input.title}
                 onChange={this.handleTitleChange}
               />
@@ -106,16 +110,16 @@ class AddNews extends Component {
           </FormGroup>
 
           <FormGroup row>
-            <Label for="TextInput" sm={2}>
+            <Label for="ContentInput" sm={2}>
               Text Area
             </Label>
             <Col sm={10}>
               <Input
                 type="textarea"
                 name="content"
-                id="TextInput"
+                id="content"
                 ref={this.input.content}
-                onChange={this.handleTextChange}
+                onChange={this.handleContentChange}
               />
             </Col>
           </FormGroup>
