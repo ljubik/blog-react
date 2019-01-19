@@ -5,9 +5,32 @@ import { Route, Link } from 'react-router-dom'
 import { getItem, setItem, clearAll } from '../components/storageservice'
 
 class AdminPage extends Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     postList: [],
+  //   }
+  // }
+
   async componentDidMount() {
     const postList = getItem('postList')
     this.setState({ postList: JSON.parse(postList) })
+    // postList.split(',')
+
+    function str_to_arr(str) {
+      var str1 = str.split(',')
+
+      var c = new Array()
+
+      for (var i = 0; i < str1.length; i++) {
+        c[i] = str1[i].split('=')
+      }
+
+      return c
+    }
+    console.log('start', postList)
+    console.log('log from start this', str_to_arr(postList))
+    console.log('log from start array', typeof postList)
   }
 
   render() {
@@ -28,20 +51,23 @@ class AdminPage extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>1</td>
-              <td>Admin</td>
-              <td>
-                <Button outline color="secondary">
-                  Edit
-                </Button>
-                <Button outline color="danger">
-                  Delete
-                </Button>
-              </td>
-            </tr>
+            {/* {postList.map((i, postList) => (
+              <tr>
+                <th scope="row" key={i} />
+                <td {...title} />
+                <td {...content}>1</td>
+                <td {...urlAlias}>Admin</td>
+                <td>
+                  <Button outline color="secondary">
+                    Edit
+                  </Button>
+                  <Button outline color="danger">
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))} */}
+
             <tr>
               <th scope="row">2</th>
               <td>Jacob</td>

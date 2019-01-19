@@ -14,7 +14,7 @@ import { getItem, setItem, clearAll } from '../components/storageservice'
 
 class newPost {
   constructor(props) {
-    //this.postList = props.postList || []
+    // this.postList = props.postList || []
     this.title = props.title || 'Some title'
     this.content = props.content || 'Some content'
     this.urlAlias = props.urlAlias || 'Some urlAlias'
@@ -53,10 +53,6 @@ class AddNews extends Component {
     this.setState({ urlAlias: event.target.value })
   }
 
-  async componentDidMount() {
-    const postList = getItem('postList')
-    this.setState({ postList: JSON.parse(postList) })
-  }
   handleSubmit(event) {
     event.preventDefault()
     const { title, content, urlAlias, imageUrl, like, postList } = this.state
@@ -69,7 +65,7 @@ class AddNews extends Component {
       like: 0,
     })
     postList.push(post)
-    //this.input.title.current.value = ''
+
     this.setState({
       title: this.title,
       content: this.content,
