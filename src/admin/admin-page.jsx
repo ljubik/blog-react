@@ -5,36 +5,20 @@ import { Route, Link } from 'react-router-dom'
 import { getItem, setItem, clearAll } from '../components/storageservice'
 
 class AdminPage extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     postList: [],
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      postList: [],
+    }
+  }
 
   async componentDidMount() {
-    const postList = getItem('postList')
+    const postList = getItem('postList', []);
 
-    console.log('log start type', typeof postList)
-
-    this.setState({ postList: JSON.parse(postList) })
-    // postList.split(',')
-
-    function str_to_arr(str) {
-      var str1 = str.split('}') //Те що відділяє масиви
-
-      var c = new Array()
-
-      for (var i = 0; i < str1.length; i++) {
-        c[i] = str1[i].split(',') //те що розіляє ключі
-      }
-
-      return c
-    }
-    // const listPostList = str_to_arr(postList)
-    //this.setState(postList)
-    console.log('start', postList)
-    console.log('log from start this', str_to_arr(postList))
+    // console.log('log start type', typeof postList)
+    //
+    if(postList.length)
+      this.setState({ postList: postList })
   }
 
   render() {
