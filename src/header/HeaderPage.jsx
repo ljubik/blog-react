@@ -6,6 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  Container,
 } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 
@@ -27,20 +28,22 @@ class HeaderPage extends Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Home</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link to="/admin/admin-page">Admin </Link>
-              </NavItem>
-              <b>
+          <Container>
+            <NavbarBrand href="/">Home</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link to="/">Log Off </Link>
+                  <Link to="/admin/AdminPage">Admin </Link>
                 </NavItem>
-              </b>
-            </Nav>
-          </Collapse>
+                <b>
+                  <NavItem>
+                    <Link to="/">Log Off </Link>
+                  </NavItem>
+                </b>
+              </Nav>
+            </Collapse>
+          </Container>
         </Navbar>
       </div>
     )

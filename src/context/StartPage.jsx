@@ -8,16 +8,21 @@ import {
   CardFooter,
   Row,
   Col,
+  Container,
 } from 'reactstrap'
-import CardSmall from './CardSmall'
+import CardSmall from '../user/CardSmall'
 
-class Container extends Component {
+class StartPage extends Component {
   render() {
     return (
       <div>
-        <CardSmall />
+        <Container>
+          <Row>
+            <CardSmall />
+          </Row>
+        </Container>
       </div>
     )
   }
 }
-export default Container
+export default StartPage

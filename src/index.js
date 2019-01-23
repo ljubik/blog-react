@@ -5,15 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import AdminPage from './admin/admin-page'
-import AddNews from './admin/add-news'
+import AdminPage from './admin/AdminPage'
+import AddNews from './admin/AddNews'
 
 ReactDOM.render(
   <BrowserRouter>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/admin/admin-page" component={AdminPage} />
-      <Route path="/admin/add-news" component={AddNews} />
+      <Route path="/admin/AdminPage" component={AdminPage} />
+      <Route path="/admin/AddNews" component={AddNews} />
     </div>
   </BrowserRouter>,
   document.getElementById('root')

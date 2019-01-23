@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap'
-import HeaderPage from '../header/header-page'
 import { Route, Link } from 'react-router-dom'
 import { getItem, setItem, clearAll } from '../components/storageservice'
 
-class AdminPage extends Component {
+class TablePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,21 +12,13 @@ class AdminPage extends Component {
   }
 
   async componentDidMount() {
-    const postList = getItem('postList', []);
-
-    // console.log('log start type', typeof postList)
-    //
-    if(postList.length)
-      this.setState({ postList: postList })
+    const postList = getItem('postList', [])
+    if (postList.length) this.setState({ postList: postList })
   }
 
   render() {
     return (
       <div>
-        <HeaderPage />
-        <Button outline color="success" onClick={this.handleNewBtn}>
-          <Link to="/admin/add-news">Greate New News </Link>
-        </Button>
         <Table hover>
           <thead>
             <tr>
@@ -70,24 +61,10 @@ class AdminPage extends Component {
                 </Button>
               </td>
             </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>4</td>
-              <td>Admin</td>
-              <td>
-                <Button outline color="secondary">
-                  Edit
-                </Button>
-                <Button outline color="danger">
-                  Delete
-                </Button>
-              </td>
-            </tr>
           </tbody>
         </Table>
       </div>
     )
   }
 }
-export default AdminPage
+export default TablePage

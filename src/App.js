@@ -2,24 +2,20 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import HeaderPage from './header/header-page'
-import StartPage from './context/start-page'
-import Container from './user/container'
+import HeaderPage from './header/HeaderPage'
+import StartPage from './context/StartPage'
+
 import { getItem, setItem } from './components/storageservice'
 class App extends Component {
   async componentDidMount() {
-    const postList = getItem('postList')
-  }
-
-  someMethod() {
-    const test = '2'
+    const postList = getItem('postList', [])
+    if (postList.length) this.setState({ postList: postList })
   }
 
   render() {
     return (
       <div>
         <HeaderPage />
-        <Container />
         <StartPage />
       </div>
     )
