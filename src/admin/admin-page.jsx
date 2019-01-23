@@ -14,23 +14,27 @@ class AdminPage extends Component {
 
   async componentDidMount() {
     const postList = getItem('postList')
+
+    console.log('log start type', typeof postList)
+
     this.setState({ postList: JSON.parse(postList) })
     // postList.split(',')
 
     function str_to_arr(str) {
-      var str1 = str.split(',')
+      var str1 = str.split('}') //Те що відділяє масиви
 
       var c = new Array()
 
       for (var i = 0; i < str1.length; i++) {
-        c[i] = str1[i].split('=')
+        c[i] = str1[i].split(',') //те що розіляє ключі
       }
 
       return c
     }
+    // const listPostList = str_to_arr(postList)
+    //this.setState(postList)
     console.log('start', postList)
     console.log('log from start this', str_to_arr(postList))
-    console.log('log from start array', typeof postList)
   }
 
   render() {

@@ -23,7 +23,20 @@ class newPost {
   }
 }
 
+function _getProprety(object, key, _default) {
+  if (object !== undefined && object[key] !== undefined) {
+    return object[key]
+  }
+  return _default
+}
+
 class AddNews extends Component {
+  async componentDidMount() {
+    //const postList = getItem('postList')
+    //console.log('log start type', typeof postList)
+    //this.setState({ postList: JSON.parse(postList) })
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -34,6 +47,7 @@ class AddNews extends Component {
       imageUrl:
         'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
       like: Number,
+      id: Number,
     }
     this.input = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -55,7 +69,15 @@ class AddNews extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { title, content, urlAlias, imageUrl, like, postList } = this.state
+    const {
+      title,
+      content,
+      urlAlias,
+      imageUrl,
+      like,
+      id,
+      postList,
+    } = this.state
     const post = new newPost({
       title: title,
       content: content,
@@ -63,26 +85,27 @@ class AddNews extends Component {
       imageUrl:
         'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
       like: 0,
+      id: id,
     })
     postList.push(post)
 
     this.setState({
-      title: this.title,
-      content: this.content,
-      urlAlias: this.urlAlias,
+      title: postList.title,
+      content: postList.content,
+      urlAlias: postList.urlAlias,
       imageUrl:
         'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
       like: 0,
+      id: id,
     })
-    console.log('log from send', this.state)
-    setItem('postList', JSON.stringify(postList))
-  }
+    console.log('log this.state', typeof this.state)
+    console.log('log this.state.postList', typeof this.state.postList)
+    console.log('log postList', typeof postList)
 
-  // handleChange(event) {
-  //   this.setState({
-  //     title: event.target.value,
-  //   })
-  // }
+    _getProprety(postList)
+    console.log('log from _getProprety', typeof postList)
+    setItem('postList', JSON.stringify([postList]))
+  }
 
   render() {
     return (
@@ -106,7 +129,7 @@ class AddNews extends Component {
           </FormGroup>
 
           <FormGroup row>
-            <Label for="ContentInput" sm={2}>
+            <Label for="content" sm={2}>
               Text Area
             </Label>
             <Col sm={10}>
