@@ -26,31 +26,34 @@ class newPost {
   }
 }
 
-function _getProprety(object, key, _default) {
-  if (object !== undefined && object[key] !== undefined) {
-    return object[key]
-  }
-  return _default
-}
+// function _getProprety(object, key, _default) {
+//   if (object !== undefined && object[key] !== undefined) {
+//     return object[key]
+//   }
+//   return _default
+// }
 
 class AddNews extends Component {
   async componentDidMount() {
     const postList = getItem('postList', [])
     if (postList.length) this.setState({ postList: postList })
+    console.log('log this.state', typeof this.state)
+    console.log('log this.state.postList', typeof this.state.postList)
+    console.log('log postList', typeof postList)
   }
 
   constructor(props) {
     super(props)
     this.state = {
       postList: [],
-      title: '',
-      content: '',
-      urlAlias: '',
-      imageUrl:
-        'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
+      title: 'title1',
+      content: 'content1',
+      urlAlias: 'url1',
+      imageUrl: 'picture.jpg',
       like: Number,
       id: Number,
     }
+
     this.input = React.createRef()
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTitleChange = this.handleTitleChange.bind(this)
@@ -81,38 +84,35 @@ class AddNews extends Component {
       postList,
     } = this.state
     const post = new newPost({
-      title: this.title,
-      content: this.content,
-      urlAlias: this.urlAlias,
-      imageUrl:
-        'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
+      title: this.state.title,
+      content: this.state.content,
+      urlAlias: this.state.urlAlias,
+      imageUrl: this.state.imageUrl,
       like: 0,
-      id: id,
+      id: this.state.id,
     })
     postList.push(post)
 
     this.setState({
-      title: postList.title,
-      content: postList.content,
-      urlAlias: postList.urlAlias,
-      imageUrl:
-        'https://cdn-images-1.medium.com/max/1600/1*DnYaPy28FmfMQSe4KWvyJw.jpeg',
-      like: 0,
-      id: id,
+      title: this.state.title,
+      content: this.state.content,
+      urlAlias: this.state.urlAlias,
+      imageUrl: this.state.imageUrl,
+      like: this.state.like,
+      id: this.state.id,
     })
     console.log('log this.state', typeof this.state)
     console.log('log this.state.postList', typeof this.state.postList)
     console.log('log postList', typeof postList)
-    _getProprety(postList)
-    console.log('log from _getProprety', typeof postList)
+
     setItem({ postList: postList })
   }
 
   render() {
     return (
       <div>
-        <HeaderPage />
         <Container>
+          {this.state.title}
           <Row>
             <Col sm={6}>
               <Form onSubmit={this.handleSubmit}>

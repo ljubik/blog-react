@@ -10,7 +10,7 @@ import {
   Col,
   Container,
 } from 'reactstrap'
-import AddNews from './AddNews'
+import { AddNews } from './AddNews'
 import { getItem, setItem, clearAll } from '../components/storageservice'
 
 class CardPreview extends Component {
@@ -18,26 +18,27 @@ class CardPreview extends Component {
     super(props)
 
     this.state = {
-      title: props.title,
+      title: this.props.title,
       username: 'test',
     }
 
     this.handleChange = this.handleChange.bind(this)
   }
 
-  // async componentDidMount() {
-  //   const postList = getItem('postList', [])
-  //   if (postList.length) this.setState({ postList: postList })
-  // }
+  async componentDidMount() {
+    const postList = getItem('postList', [])
+    if (postList.length) this.setState({ postList: postList })
+  }
 
   handleChange(e) {
     this.setState({
       username: e.target.value,
     })
   }
+
   render() {
     return (
-      <Col xs="4">
+      <Col xs="6">
         <CardImg
           top
           width="30%"
@@ -51,7 +52,9 @@ class CardPreview extends Component {
             value={this.state.username}
             onChange={this.handleChange}
           />
-          <CardTitle name="title">{this.state.username}</CardTitle>
+          <CardTitle name="title" value={this.state.title}>
+            {this.state.title}
+          </CardTitle>
           <CardText>
             With supporting text below as a natural lead-in to additional
             content.

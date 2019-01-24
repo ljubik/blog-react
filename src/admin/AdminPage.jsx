@@ -24,7 +24,7 @@ class AdminPage extends Component {
         <HeaderPage />
         <Container>
           <Button outline color="success" onClick={this.handleNewBtn}>
-            <Link to="/admin/AddNews">Greate New News </Link>
+            <Link to="/admin/AddNewsPage">Greate New News </Link>
           </Button>
           <TablePage />
         </Container>

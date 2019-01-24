@@ -7,10 +7,10 @@ import StartPage from './context/StartPage'
 
 import { getItem, setItem } from './components/storageservice'
 class App extends Component {
-  async componentDidMount() {
-    const postList = getItem('postList', [])
-    if (postList.length) this.setState({ postList: postList })
-  }
+  // async componentDidMount() {
+  //   const postList = getItem('postList', [])
+  //   if (postList.length) this.setState({ postList: postList })
+  // }
 
   render() {
     return (

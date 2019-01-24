@@ -7,12 +7,14 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import AdminPage from './admin/AdminPage'
 import AddNews from './admin/AddNews'
+import AddNewsPage from './admin/AddNewsPage'
 
 ReactDOM.render(
   <BrowserRouter>
     <div>
       <Route exact path="/" component={App} />
       <Route path="/admin/AdminPage" component={AdminPage} />
+      <Route path="/admin/AddNewsPage" component={AddNewsPage} />
       <Route path="/admin/AddNews" component={AddNews} />
     </div>
   </BrowserRouter>,
