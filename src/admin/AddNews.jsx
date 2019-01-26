@@ -17,7 +17,7 @@ import CardPreview from './CardPreview'
 
 class newPost {
   constructor(props) {
-    this.postList = props.postList || []
+    // this.postList = props.postList || []
     this.title = props.title || 'Some title'
     this.content = props.content || 'Some content'
     this.urlAlias = props.urlAlias || 'Some urlAlias'
@@ -30,21 +30,18 @@ class AddNews extends Component {
   async componentDidMount() {
     const postList = getItem('postList', [])
     if (postList.length) this.setState({ postList: postList })
-    console.log('log this.state', typeof this.state)
-    console.log('log this.state.postList', typeof this.state.postList)
-    console.log('log postList', typeof postList)
   }
 
   constructor(props) {
     super(props)
     this.state = {
       postList: [],
-      title: '',
-      content: '',
-      urlAlias: '',
-      imageUrl: '',
-      like: Number,
-      idx: Number,
+      // title: '',
+      // content: '',
+      // urlAlias: '',
+      // imageUrl: '',
+      // like: Number,
+      // idx: Number,
     }
 
     this.input = React.createRef()
@@ -87,18 +84,9 @@ class AddNews extends Component {
     postList.push(post)
 
     this.setState({
-      title: title,
-      content: content,
-      urlAlias: urlAlias,
-      imageUrl: imageUrl,
-      like: 0,
-      idx: idx,
+      postList: postList,
     })
-    console.log('log this.state', typeof this.state)
-    console.log('log this.state.postList', typeof this.state.postList)
-    console.log('log postList', typeof postList)
-
-    setItem({ postList: postList })
+    setItem('postList', JSON.stringify(this.state.postList))
   }
 
   render() {

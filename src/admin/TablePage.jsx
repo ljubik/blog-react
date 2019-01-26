@@ -71,18 +71,19 @@ class TablePage extends Component {
   }
 
   handleEdit = index => () => {
-    console.log('handleEdit', this.props.items[index].idx)
+    console.log('handleEdit', this.state.postList[index].idx)
     alert(this.props.items[index].title)
   }
 
-  handleDelete = index => () => {
-    console.log('handleDelete start', this.props.items)
-    this.props.items[index].splice(index, 1)
-    console.log('handleDelete after', this.props.items)
+  handleDelete = (index, idx) => () => {
+    console.log('handleDelete start', this.state.postList)
+    const newList = this.state.postList
+    // this.state.items[index].splice(index, 1)
+    console.log('handleDelete after', newList[index].idx)
   }
 
   render() {
-    console.log('otrymaly', this.props.items)
+    console.log('otrymaly v TablePage', this.state.postList)
     return (
       <div>
         <Table hover>
@@ -90,15 +91,15 @@ class TablePage extends Component {
             <tr>
               <th>ID</th>
               <th>News Title</th>
-              <th>Like</th>
-              <th>Author</th>
+              <th>Content</th>
+              <th>Url page </th>
               <th>Function</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.items.map((item, index) => (
+            {this.state.postList.map((item, index) => (
               <tr key={index}>
-                <th scope="row">{item.idx}</th>
+                <th scope="row">{index}</th>
                 <td>{item.title}</td>
                 <td>{item.content}</td>
                 <td>{item.urlAlias}</td>
