@@ -17,9 +17,7 @@ class StartPage extends Component {
     return (
       <div>
         <Container>
-          <Row>
-            <CardSmall />
-          </Row>
+          <CardSmall />
         </Container>
       </div>
     )

@@ -1,51 +1,68 @@
 import React, { Component } from 'react'
-import { Table, Button } from 'reactstrap'
+import {
+  Table,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import { getItem, setItem, clearAll } from '../components/storageservice'
-import { formatWithOptions } from 'util'
 
 class TablePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      postList: [
-        {
-          idx: 0,
-          title: 'title1',
-          content: 'text in content',
-          urlAlias: 'fotos1.jpg',
-          like: 0,
-        },
-        {
-          idx: 1,
-          title: 'title2',
-          content: 'text in content2',
-          urlAlias: 'fotos2.jpg',
-          like: 5,
-        },
-        {
-          idx: 2,
-          title: 'title3',
-          content: 'text in content33',
-          urlAlias: 'fotos3.jpg',
-          like: 5,
-        },
-        {
-          idx: 3,
-          title: 'title3',
-          content: 'text in content33',
-          urlAlias: 'fotos3.jpg',
-          like: 7,
-        },
-        {
-          idx: 4,
-          title: 'title3',
-          content: 'text in content33',
-          urlAlias: 'fotos3.jpg',
-          like: 5,
-        },
-      ],
+      modal: false,
+      title: '',
+      content: '',
+      urlAlias: '',
+      imageUrl: '',
+      like: Number,
+      idx: Number,
+      postList: [],
+      // postList: [
+      //   {
+      //     idx: 1,
+      //     title: 'title1',
+      //     content: 'text in content firsttttt',
+      //     urlAlias: 'fotos1.jpg',
+      //     like: 0,
+      //   },
+      //   {
+      //     idx: 2,
+      //     title: 'title2',
+      //     content: 'text in content2',
+      //     urlAlias: 'fotos2.jpg',
+      //     like: 5,
+      //   },
+      //   {
+      //     idx: 3,
+      //     title: 'title3',
+      //     content: 'text in content33',
+      //     urlAlias: 'fotos3.jpg',
+      //     like: 5,
+      //   },
+      //   {
+      //     idx: 4,
+      //     title: 'title4',
+      //     content:
+      //       'text in content fgdfgdgd dfgdgddfgd d  fgdg dfgd g 33343 434345343334 3434343 3 34 34 34 34 ',
+      //     urlAlias: 'fotos4.jpg',
+      //     like: 7,
+      //   },
+      //   {
+      //     idx: 5,
+      //     title: 'title5',
+      //     content: 'text in content33555555',
+      //     urlAlias: 'fotos5.jpg',
+      //     like: 5,
+      //   },
+      // ],
     }
+    this.handleEdit = this.handleEdit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   async componentDidMount() {
@@ -53,7 +70,19 @@ class TablePage extends Component {
     if (postList.length) this.setState({ postList: postList })
   }
 
+  handleEdit = index => () => {
+    console.log('handleEdit', this.props.items[index].idx)
+    alert(this.props.items[index].title)
+  }
+
+  handleDelete = index => () => {
+    console.log('handleDelete start', this.props.items)
+    this.props.items[index].splice(index, 1)
+    console.log('handleDelete after', this.props.items)
+  }
+
   render() {
+    console.log('otrymaly', this.props.items)
     return (
       <div>
         <Table hover>
@@ -67,20 +96,23 @@ class TablePage extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.postList.map(idx => (
-              <tr>
-                <th scope="row" key={idx}>
-                  {idx.idx}
-                </th>
-                {/* <td {this.state.postList[i].title} /> */}
-                <td>{idx.title}</td>
-                <td>{idx.content}</td>
-                <td>{idx.urlAlias}</td>
+            {this.props.items.map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{item.idx}</th>
+                <td>{item.title}</td>
+                <td>{item.content}</td>
+                <td>{item.urlAlias}</td>
                 <td>
-                  <Button outline color="secondary">
+                  <Button
+                    outline
+                    color="secondary"
+                    onClick={this.handleEdit(index)}>
                     Edit
                   </Button>
-                  <Button outline color="danger">
+                  <Button
+                    outline
+                    color="danger"
+                    onClick={this.handleDelete(index)}>
                     Delete
                   </Button>
                 </td>
