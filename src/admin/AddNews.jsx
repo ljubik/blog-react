@@ -26,13 +26,6 @@ class newPost {
   }
 }
 
-// function _getProprety(object, key, _default) {
-//   if (object !== undefined && object[key] !== undefined) {
-//     return object[key]
-//   }
-//   return _default
-// }
-
 class AddNews extends Component {
   async componentDidMount() {
     const postList = getItem('postList', [])
@@ -46,12 +39,12 @@ class AddNews extends Component {
     super(props)
     this.state = {
       postList: [],
-      title: 'title1',
-      content: 'content1',
-      urlAlias: 'url1',
-      imageUrl: 'picture.jpg',
+      title: '',
+      content: '',
+      urlAlias: '',
+      imageUrl: '',
       like: Number,
-      id: Number,
+      idx: Number,
     }
 
     this.input = React.createRef()
@@ -80,26 +73,26 @@ class AddNews extends Component {
       urlAlias,
       imageUrl,
       like,
-      id,
+      idx,
       postList,
     } = this.state
     const post = new newPost({
-      title: this.state.title,
-      content: this.state.content,
-      urlAlias: this.state.urlAlias,
-      imageUrl: this.state.imageUrl,
+      title: title,
+      content: content,
+      urlAlias: urlAlias,
+      imageUrl: imageUrl,
       like: 0,
-      id: this.state.id,
+      idx: idx,
     })
     postList.push(post)
 
     this.setState({
-      title: this.state.title,
-      content: this.state.content,
-      urlAlias: this.state.urlAlias,
-      imageUrl: this.state.imageUrl,
-      like: this.state.like,
-      id: this.state.id,
+      title: title,
+      content: content,
+      urlAlias: urlAlias,
+      imageUrl: imageUrl,
+      like: 0,
+      idx: idx,
     })
     console.log('log this.state', typeof this.state)
     console.log('log this.state.postList', typeof this.state.postList)

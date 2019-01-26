@@ -2,12 +2,49 @@ import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import { getItem, setItem, clearAll } from '../components/storageservice'
+import { formatWithOptions } from 'util'
 
 class TablePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      postList: [],
+      postList: [
+        {
+          idx: 0,
+          title: 'title1',
+          content: 'text in content',
+          urlAlias: 'fotos1.jpg',
+          like: 0,
+        },
+        {
+          idx: 1,
+          title: 'title2',
+          content: 'text in content2',
+          urlAlias: 'fotos2.jpg',
+          like: 5,
+        },
+        {
+          idx: 2,
+          title: 'title3',
+          content: 'text in content33',
+          urlAlias: 'fotos3.jpg',
+          like: 5,
+        },
+        {
+          idx: 3,
+          title: 'title3',
+          content: 'text in content33',
+          urlAlias: 'fotos3.jpg',
+          like: 7,
+        },
+        {
+          idx: 4,
+          title: 'title3',
+          content: 'text in content33',
+          urlAlias: 'fotos3.jpg',
+          like: 5,
+        },
+      ],
     }
   }
 
@@ -30,12 +67,15 @@ class TablePage extends Component {
             </tr>
           </thead>
           <tbody>
-            {/* {postList.map((i, postList) => (
+            {this.state.postList.map(idx => (
               <tr>
-                <th scope="row" key={i} />
-                <td {...title} />
-                <td {...content}>1</td>
-                <td {...urlAlias}>Admin</td>
+                <th scope="row" key={idx}>
+                  {idx.idx}
+                </th>
+                {/* <td {this.state.postList[i].title} /> */}
+                <td>{idx.title}</td>
+                <td>{idx.content}</td>
+                <td>{idx.urlAlias}</td>
                 <td>
                   <Button outline color="secondary">
                     Edit
@@ -45,22 +85,7 @@ class TablePage extends Component {
                   </Button>
                 </td>
               </tr>
-            ))} */}
-
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>22</td>
-              <td>Admin</td>
-              <td>
-                <Button outline color="secondary">
-                  Edit
-                </Button>
-                <Button outline color="danger">
-                  Delete
-                </Button>
-              </td>
-            </tr>
+            ))}
           </tbody>
         </Table>
       </div>

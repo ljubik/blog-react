@@ -19,16 +19,16 @@ class CardPreview extends Component {
 
     this.state = {
       title: this.props.title,
-      username: 'test',
+      username: 'Title test',
     }
 
     this.handleChange = this.handleChange.bind(this)
   }
 
-  async componentDidMount() {
-    const postList = getItem('postList', [])
-    if (postList.length) this.setState({ postList: postList })
-  }
+  // async componentDidMount() {
+  //   const postList = getItem('postList', [])
+  //   if (postList.length) this.setState({ postList: postList })
+  // }
 
   handleChange(e) {
     this.setState({
@@ -54,6 +54,7 @@ class CardPreview extends Component {
           />
           <CardTitle name="title" value={this.state.title}>
             {this.state.title}
+            {this.state.username}
           </CardTitle>
           <CardText>
             With supporting text below as a natural lead-in to additional
