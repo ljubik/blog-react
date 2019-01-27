@@ -36,12 +36,12 @@ class AddNews extends Component {
     super(props)
     this.state = {
       postList: [],
-      // title: '',
-      // content: '',
-      // urlAlias: '',
-      // imageUrl: '',
-      // like: Number,
-      // idx: Number,
+      title: '',
+      content: '',
+      urlAlias: '',
+      imageUrl: '',
+      like: Number,
+      idx: Number,
     }
 
     this.input = React.createRef()
@@ -93,8 +93,7 @@ class AddNews extends Component {
     return (
       <div>
         <Container>
-          {this.state.title}
-          <Row>
+          <Row sm={8}>
             <Col sm={6}>
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup row>
@@ -151,8 +150,11 @@ class AddNews extends Component {
                 </FormGroup>
                 <FormGroup check row>
                   <Col sm={{ size: 10, offset: 2 }}>
-                    <Button color="success" tabIndex="10">
-                      Save
+                    <Button
+                      color="success"
+                      tabIndex="10"
+                      onClick={this.handleSubmit}>
+                      <Link to="/admin/AdminPage">Save</Link>
                     </Button>
                     <Button outline color="secondary">
                       <Link to="/admin/AdminPage">Cancel </Link>
@@ -161,7 +163,7 @@ class AddNews extends Component {
                 </FormGroup>
               </Form>
             </Col>
-            <CardPreview />
+            {/* <CardPreview /> */}
           </Row>
         </Container>
       </div>

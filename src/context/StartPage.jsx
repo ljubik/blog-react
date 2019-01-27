@@ -14,7 +14,6 @@ import CardSmall from '../user/CardSmall'
 
 class StartPage extends Component {
   render() {
-    console.log('otrymaly v StartPage', this.props.items)
     return (
       <div>
         <Container>

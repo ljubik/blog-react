@@ -38,7 +38,7 @@ class HeaderPage extends Component {
                 </NavItem>
                 <b>
                   <NavItem>
-                    <Link to="/">Log Off </Link>
+                    <Link to="/"> Log Off </Link>
                   </NavItem>
                 </b>
               </Nav>

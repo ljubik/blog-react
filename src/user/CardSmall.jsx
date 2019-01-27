@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   Card,
   Button,
+  Badge,
   CardImg,
   CardTitle,
   CardText,
@@ -11,23 +12,47 @@ import {
   Container,
 } from 'reactstrap'
 import { getItem, setItem, clearAll } from '../components/storageservice'
+import { Route, Link } from 'react-router-dom'
 
 class CardSmall extends Component {
   constructor(props) {
     super(props)
     this.state = {
       postList: [],
+      title: '',
+      content: '',
+      urlAlias: '',
+      imageUrl: '',
+      like: Number,
+      idx: Number,
     }
+    this.handleLike = this.handleLike.bind(this)
+    this.handleRead = this.handleRead.bind(this)
   }
   async componentDidMount() {
     const postList = getItem('postList', [])
     if (postList.length) this.setState({ postList: postList })
   }
+
+  handleLike = index => () => {
+    const like = this.state.postList
+    //like[index].like = like + 1
+    // this.setState.postList[index].like.push(like)
+    console.log('handleLike ', like[index].like)
+    // this.setState.postList[index].like
+    // this.setState({ count: this.state.count + 1 })
+    //this.setState.postList[index]({ like: like + 1 })
+  }
+
+  handleRead = index => () => {
+    console.log('handleRead', this.state.postList[index])
+  }
+
   render() {
-    console.log('otrymaly v CardSmall', this.state.postList)
+    // console.log('otrymaly v CardSmall', this.state.postList)
     return (
       <Row>
-        {this.state.postList.map((item, index) => (
+        {this.state.postList.map((postList, index) => (
           <Col xs="4" key={index}>
             <CardImg
               top
@@ -36,14 +61,20 @@ class CardSmall extends Component {
               alt="Card image cap"
             />
             <Card body>
-              <CardTitle>{item.title}</CardTitle>
-              <CardText>{item.content}</CardText>
+              <CardTitle>{postList.title}</CardTitle>
+              <CardText>{postList.content}</CardText>
               <CardFooter className="text-muted left">
-                <Button outline color="primary">
-                  Read more
+                <Button
+                  outline
+                  color="primary"
+                  onClick={this.handleRead(index)}>
+                  <Link to={postList.urlAlias}>Read more</Link>
                 </Button>
-                <Button outline color="secondary">
-                  Like
+                <Button
+                  outline
+                  color="secondary"
+                  onClick={this.handleLike(index)}>
+                  Like <Badge color="secondary">{postList.like}</Badge>
                 </Button>
               </CardFooter>
             </Card>

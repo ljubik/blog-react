@@ -9,6 +9,7 @@ import AdminPage from './admin/AdminPage'
 import AddNews from './admin/AddNews'
 import AddNewsPage from './admin/AddNewsPage'
 import First from './new/First'
+import Routers from './Routers'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Route path="/admin/AddNewsPage" component={AddNewsPage} />
       <Route path="/admin/AddNews" component={AddNews} />
       <Route path="/new/First" component={First} />
+      <Routers />
     </div>
   </BrowserRouter>,
   document.getElementById('root')

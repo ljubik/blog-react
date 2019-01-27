@@ -71,15 +71,17 @@ class TablePage extends Component {
   }
 
   handleEdit = index => () => {
-    console.log('handleEdit', this.state.postList[index].idx)
-    alert(this.props.items[index].title)
+    console.log('handleEdit', this.state.postList[index])
+    alert(this.state.postList[index].title)
   }
 
   handleDelete = (index, idx) => () => {
     console.log('handleDelete start', this.state.postList)
     const newList = this.state.postList
-    // this.state.items[index].splice(index, 1)
-    console.log('handleDelete after', newList[index].idx)
+    newList[index].splice(index, 1)
+    // this.setState.postList = newList
+    console.log('handleDelete newList', newList[index])
+    console.log('handleDelete after', this.state.postList)
   }
 
   render() {
@@ -97,12 +99,14 @@ class TablePage extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.postList.map((item, index) => (
+            {this.state.postList.map((postList, index) => (
               <tr key={index}>
                 <th scope="row">{index}</th>
-                <td>{item.title}</td>
-                <td>{item.content}</td>
-                <td>{item.urlAlias}</td>
+                <td>{postList.title}</td>
+                <td>{postList.content}</td>
+                <td>
+                  <Link to={postList.urlAlias}>{postList.urlAlias}</Link>
+                </td>
                 <td>
                   <Button
                     outline

@@ -52,16 +52,23 @@ class AdminPage extends Component {
     super(props)
     this.state = {
       postList: [],
+      title: '',
+      content: '',
+      urlAlias: '',
+      imageUrl: '',
+      like: Number,
+      idx: Number,
     }
+    this.handleNewBtn = this.handleNewBtn.bind(this)
   }
 
   async componentDidMount() {
     const postList = getItem('postList', [])
     if (postList.length) this.setState({ postList: postList })
   }
-
+  handleNewBtn() {}
   render() {
-    console.log('otrymaly v AdminPage', this.props.items)
+    console.log('otrymaly v AdminPage', this.state.postList)
     return (
       <div>
         <HeaderPage />

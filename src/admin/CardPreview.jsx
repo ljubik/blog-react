@@ -25,10 +25,10 @@ class CardPreview extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  // async componentDidMount() {
-  //   const postList = getItem('postList', [])
-  //   if (postList.length) this.setState({ postList: postList })
-  // }
+  async componentDidMount() {
+    const postList = getItem('postList', [])
+    if (postList.length) this.setState({ postList: postList })
+  }
 
   handleChange(e) {
     this.setState({
