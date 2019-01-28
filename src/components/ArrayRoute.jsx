@@ -1,28 +1,24 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import { getItem } from './components/storageservice'
+import { getItem } from './storageservice'
 
-class Routers extends Component {
+class ArrayRoute extends Component {
   async componentDidMount() {
     const postList = getItem('postList', [])
     if (postList.length) this.setState({ postList: postList })
   }
 
   render() {
+    console.log('otrymav ArrayRoute', this.state.postList)
     return (
       <div>
+        {/* <Link to='/article/${id}'>Read More</Link> */}
         {this.state.postList.map((postList, index) => (
-          <BrowserRouter>
-            <Route
-              key={index}
-              path={postList.urlAlias}
-              component={postList.urlAlias}
-            />
-          </BrowserRouter>
+          <Link to="/article/${postList.urlAlias}">{postList.index}</Link>
         ))}
       </div>
     )
   }
 }
 
-export default Routers
+export default ArrayRoute

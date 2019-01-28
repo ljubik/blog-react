@@ -13,6 +13,7 @@ import {
 } from 'reactstrap'
 import { getItem, setItem, clearAll } from '../components/storageservice'
 import { Route, Link } from 'react-router-dom'
+import ArrayRoute from '../components/ArrayRoute'
 
 class CardSmall extends Component {
   constructor(props) {
@@ -68,8 +69,11 @@ class CardSmall extends Component {
                   outline
                   color="primary"
                   onClick={this.handleRead(index)}>
-                  <Link to={postList.urlAlias}>Read more</Link>
+                  <Link to={`/user/${postList.urlAlias}`} item={postList}>
+                    Read more
+                  </Link>
                 </Button>
+                {/* <ArrayRoute data={postList[index].urlAlias} /> */}
                 <Button
                   outline
                   color="secondary"
