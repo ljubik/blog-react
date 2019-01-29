@@ -14,7 +14,7 @@ class ArrayRoute extends Component {
       <div>
         {/* <Link to='/article/${id}'>Read More</Link> */}
         {this.state.postList.map((postList, index) => (
-          <Link to="/article/${postList.urlAlias}">{postList.index}</Link>
+          <Link to={`/user/${postList.urlAlias}`}>{postList.index}</Link>
         ))}
       </div>
     )

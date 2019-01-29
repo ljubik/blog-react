@@ -7,8 +7,9 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import AdminPage from './admin/AdminPage'
 import AddNews from './admin/AddNews'
+import EditNews from './admin/EditNews'
 import AddNewsPage from './admin/AddNewsPage'
-import Container from './user/Container'
+import ContainerList from './user/ContainerList'
 import First from './new/First'
 import ArrayRoute from './components/ArrayRoute'
 
@@ -19,7 +20,8 @@ ReactDOM.render(
       <Route path="/admin/AdminPage" component={AdminPage} />
       <Route path="/admin/AddNewsPage" component={AddNewsPage} />
       <Route path="/admin/AddNews" component={AddNews} />
-      <Route path="/user/" component={Container} />
+      <Route path="/admin/edit/" component={EditNews} />
+      <Route path="/article/" component={ContainerList} />
       <Route path="/new/First" component={First} />
       <Route path="/components/ArrayRoute" component={ArrayRoute} />
     </div>

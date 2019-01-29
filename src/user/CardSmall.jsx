@@ -69,7 +69,7 @@ class CardSmall extends Component {
                   outline
                   color="primary"
                   onClick={this.handleRead(index)}>
-                  <Link to={`/user/${postList.urlAlias}`} item={postList}>
+                  <Link to={`/article/${postList.urlAlias}`} items={postList}>
                     Read more
                   </Link>
                 </Button>

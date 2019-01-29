@@ -22,44 +22,6 @@ class TablePage extends Component {
       like: Number,
       idx: Number,
       postList: [],
-      // postList: [
-      //   {
-      //     idx: 1,
-      //     title: 'title1',
-      //     content: 'text in content firsttttt',
-      //     urlAlias: 'fotos1.jpg',
-      //     like: 0,
-      //   },
-      //   {
-      //     idx: 2,
-      //     title: 'title2',
-      //     content: 'text in content2',
-      //     urlAlias: 'fotos2.jpg',
-      //     like: 5,
-      //   },
-      //   {
-      //     idx: 3,
-      //     title: 'title3',
-      //     content: 'text in content33',
-      //     urlAlias: 'fotos3.jpg',
-      //     like: 5,
-      //   },
-      //   {
-      //     idx: 4,
-      //     title: 'title4',
-      //     content:
-      //       'text in content fgdfgdgd dfgdgddfgd d  fgdg dfgd g 33343 434345343334 3434343 3 34 34 34 34 ',
-      //     urlAlias: 'fotos4.jpg',
-      //     like: 7,
-      //   },
-      //   {
-      //     idx: 5,
-      //     title: 'title5',
-      //     content: 'text in content33555555',
-      //     urlAlias: 'fotos5.jpg',
-      //     like: 5,
-      //   },
-      // ],
     }
     this.handleEdit = this.handleEdit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
@@ -72,7 +34,7 @@ class TablePage extends Component {
 
   handleEdit = index => () => {
     console.log('handleEdit', this.state.postList[index])
-    alert(this.state.postList[index].title)
+    //alert(this.state.postList[index].title)
   }
 
   handleDelete = (index, idx) => () => {
@@ -105,14 +67,16 @@ class TablePage extends Component {
                 <td>{postList.title}</td>
                 <td>{postList.content}</td>
                 <td>
-                  <Link to={postList.urlAlias}>{postList.urlAlias}</Link>
+                  <Link to={`/user/${postList.urlAlias}`}>
+                    {postList.urlAlias}
+                  </Link>
                 </td>
                 <td>
                   <Button
                     outline
                     color="secondary"
                     onClick={this.handleEdit(index)}>
-                    Edit
+                    <Link to={`/admin/edit/${postList.urlAlias}`}>Edit</Link>
                   </Button>
                   <Button
                     outline
