@@ -38,12 +38,12 @@ class TablePage extends Component {
   }
 
   handleDelete = (index, idx) => () => {
-    console.log('handleDelete start', this.state.postList)
-    const newList = this.state.postList
-    newList[index].splice(index, 1)
-    // this.setState.postList = newList
-    console.log('handleDelete newList', newList[index])
-    console.log('handleDelete after', this.state.postList)
+    console.log('handleDelete start', this.state.postList[index])
+    // const newList = this.state.postList
+    // newList[index].splice(index, 1)
+    // this.setState({ postList: newList })
+    // console.log('handleDelete newList', newList[index])
+    // console.log('handleDelete after', this.state.postList)
   }
 
   render() {

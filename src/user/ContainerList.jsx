@@ -15,17 +15,26 @@ import HeaderPage from '../header/HeaderPage'
 
 class ContainerList extends Component {
   async componentDidMount() {
-    const postList = getItem('postList', [])
-    if (postList.length) this.setState({ postList: postList })
+    // const postList = getItem('postList', [])
+    // if (postList.length) this.setState({ postList: postList })
+    // const IdList = this.props.postList
+    // IdList: this.state.postList.filter(
+    //   (urlAlias, index) => urlAlias === urlAlias
+    // )
+    //const IdList = this.state.postList
+    //console.log('did mount array ?', items)
   }
 
   render() {
-    //console.log('otrymaly v Container', this.state.postList)
+    console.log('otrymaly v ContainerList', this.props)
+    console.log('otrymaly v ContainerList', this.state)
 
     return (
       <div>
         <HeaderPage />
-        component to wiew
+        <div>component to wiew </div>
+        {/* <label value="items" /> */}
+        {/* {this.state.postList.filter((urlAlias, index) => urlAlias === urlAlias)} */}
         {/* {this.state.postList.map((postList, index) => (
           <Col xs="10" key={index}>
             <Card body>

@@ -164,7 +164,7 @@ class EditNews extends Component {
                 </FormGroup>
               </Form>
             </Col>
-            <CardPreview />
+            {/* <CardPreview /> */}
           </Row>
         </Container>
       </div>

@@ -46,6 +46,7 @@ class CardSmall extends Component {
   }
 
   handleRead = index => () => {
+    this.props = this.state.postList[index]
     console.log('handleRead', this.state.postList[index])
   }
 
@@ -68,10 +69,9 @@ class CardSmall extends Component {
                 <Button
                   outline
                   color="primary"
-                  onClick={this.handleRead(index)}>
-                  <Link to={`/article/${postList.urlAlias}`} items={postList}>
-                    Read more
-                  </Link>
+                  onClick={this.handleRead(index)}
+                  props={postList}>
+                  <Link to={`/article/${postList.urlAlias}`}>Read more</Link>
                 </Button>
                 {/* <ArrayRoute data={postList[index].urlAlias} /> */}
                 <Button
